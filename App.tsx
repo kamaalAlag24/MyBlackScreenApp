@@ -1,118 +1,76 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
-
 import React from 'react';
-import type {PropsWithChildren} from 'react';
-import {
-  SafeAreaView,
-  ScrollView,
-  StatusBar,
-  StyleSheet,
-  Text,
-  useColorScheme,
-  View,
-} from 'react-native';
+import { StyleSheet, View, Animated } from 'react-native';
+import { Button } from './src/components/Button'; 
+import { moveCircle, value } from './src/components/Utils/Animation/Bounce';
+import { PanGestureHandler, GestureHandlerRootView } from 'react-native-gesture-handler';
+import { onGestureEvent, onHandlerStateChange, translateX, translateY } from './src/components/Utils/Animation/Drag';
 
-import {
-  Colors,
-  DebugInstructions,
-  Header,
-  LearnMoreLinks,
-  ReloadInstructions,
-} from 'react-native/Libraries/NewAppScreen';
+const App = () => {
+//   return (
+//     <View style={styles.container}>
+//       <Animated.View
+//         style={[
+//           styles.circle,
+//           {
+//             transform: [{ translateY: value }]
+//           }
+//         ]}
+//       />
+//       <View style={styles.buttonContainer}>
+//         <Button variant="primary" onPress={moveCircle}></Button>
+//       </View>
+//     </View>
+//   );
+// };
 
-type SectionProps = PropsWithChildren<{
-  title: string;
-}>;
+return (
+  <GestureHandlerRootView style={{ flex: 1 }}>
+      <View style={styles.container}>
+          <PanGestureHandler
+              onGestureEvent={onGestureEvent}
+              >
+              <Animated.View
+                  style={[
+                      styles.circle,
+                      {
+                          transform: [
+                              { translateX },
+                              { translateY },
+                              { translateY: value }
+                          ]
+                      }
+                  ]}
+                  
+              />
+          </PanGestureHandler>
+          <View style={styles.buttonContainer}>
+        <Button variant="primary" onPress={moveCircle}></Button>
+      </View>
+      </View>
+  </GestureHandlerRootView>
+);
+};
 
-function Section({children, title}: SectionProps): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-  return (
-    <View style={styles.sectionContainer}>
-      <Text
-        style={[
-          styles.sectionTitle,
-          {
-            color: isDarkMode ? Colors.white : Colors.black,
-          },
-        ]}>
-        {title}
-      </Text>
-      <Text
-        style={[
-          styles.sectionDescription,
-          {
-            color: isDarkMode ? Colors.light : Colors.dark,
-          },
-        ]}>
-        {children}
-      </Text>
-    </View>
-  );
-}
-
-function App(): React.JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
-
-  const backgroundStyle = {
-    backgroundColor: isDarkMode ? Colors.darker : Colors.lighter,
-  };
-
-  return (
-    <SafeAreaView style={backgroundStyle}>
-      <StatusBar
-        barStyle={isDarkMode ? 'light-content' : 'dark-content'}
-        backgroundColor={backgroundStyle.backgroundColor}
-      />
-      <ScrollView
-        contentInsetAdjustmentBehavior="automatic"
-        style={backgroundStyle}>
-        <Header />
-        <View
-          style={{
-            backgroundColor: isDarkMode ? Colors.black : Colors.white,
-          }}>
-          <Section title="Step One">
-            Edit <Text style={styles.highlight}>App.tsx</Text> to change this
-            screen and then come back to see your edits.
-          </Section>
-          <Section title="See Your Changes">
-            <ReloadInstructions />
-          </Section>
-          <Section title="Debug">
-            <DebugInstructions />
-          </Section>
-          <Section title="Learn More">
-            Read the docs to discover what to do next:
-          </Section>
-          <LearnMoreLinks />
-        </View>
-      </ScrollView>
-    </SafeAreaView>
-  );
-}
 
 const styles = StyleSheet.create({
-  sectionContainer: {
-    marginTop: 32,
-    paddingHorizontal: 24,
+  container: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'white', 
   },
-  sectionTitle: {
-    fontSize: 24,
-    fontWeight: '600',
+  circle: {
+    width: 100,
+    height: 100,
+    borderRadius: 50,
+    backgroundColor: 'red',
+    position: 'absolute'
   },
-  sectionDescription: {
-    marginTop: 8,
-    fontSize: 18,
-    fontWeight: '400',
-  },
-  highlight: {
-    fontWeight: '700',
-  },
+  buttonContainer: {
+    position: 'absolute',
+    bottom: 50 
+  }
 });
 
 export default App;
+
