@@ -108,8 +108,42 @@
 
 //Ternary Operator
 
-age = 21;
+// age = 21;
 
 
-age>= 18 ? console.log("you can vote"): console.log("You cannot vote") // cond ? 'true' : 'false"
+// age>= 18 ? console.log("you can vote"): console.log("You cannot vote") // cond ? 'true' : 'false"
+
+// Loops 
+
+// for loop
+
+
+// Expression 1
+// var s = "";
+// for(var i = 1; i < 6; i += 1) {
+//   s += i + " ";
+// }
+// console.log(s); // 1 2 3 4 5
+
+
+// Expression 2
+
+
+// let i =1;
+// var s = " ";
+
+// for (; i < 5; i++) {
+//     s += i + " ";
+// }
+// console.log(s);
+
+// Expression 3
+
+// i=0;
+// s=" ";
+// for (; i < 6; ) {
+//         s += i + " ";
+//         i++;
+//  }
+//     console.log(s);
 
