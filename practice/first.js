@@ -147,3 +147,24 @@
 //  }
 //     console.log(s);
 
+
+// var i = 10;
+
+// for (var i = 0; i < 5; i++) {
+//   console.log(i);
+// }
+// console.log(i); // here I will be 5 because we are using var
+
+
+// for in loop
+
+const person = {fname:"John", lname:"Doe", age:25};
+
+
+for ( let x in person) {
+  
+console.log(person[x]); // john
+                        // doe
+                        // 25
+}
+
