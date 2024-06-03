@@ -6,7 +6,7 @@
 // import { onGestureEvent, onHandlerStateChange, translateX, translateY } from './src/components/Utils/Animation/Drag';
 
 import { Button, SafeAreaView, Text, View } from "react-native";
-import { MyComponent, styles } from "./src/Hooks/useState/count";
+import { MyComponent, styles } from "./src/hooks/useState/count";
 
 
 // const App = () => {
@@ -125,43 +125,46 @@ import { MyComponent, styles } from "./src/Hooks/useState/count";
 
 // export default App;
 
-// import React, { useCallback, useState } from "react";
-// import { MemoizedComponent } from "./src/Hooks/useCallBack";
+import React, { useCallback, useState } from "react";
+import { MemoizedComponent } from "./src/hooks/useCallBack";
 
-// const App = () => {
-//   const [count, setCount] = useState(0);
-   
-  
-//   const memoizedCallback = useCallback(() => {    /// useCall Back
-//     console.log('Callback invoked');
-    
-//     setCount(count + 1);
-//   }, [count]);
-
-//   return (
-//     <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-//       <Text>Count: {count}</Text>
-//       <MemoizedComponent onPress={memoizedCallback} />  
-//     </SafeAreaView>
-//   );
-// };
-
-// export default App;
-
-
-import React from 'react';
-import { StyleSheet } from 'react-native';
-import Calc from "./src/Hooks/useEffect";
 
 
 const App = () => {
+   const [count, setCount] = useState(0);
+   
+  
+   const memoizedCallback = useCallback(() => {   
+    console.log('Callback invoked');
+    
+    setCount(count + 1);
+  }, 
+  [count]);
+
   return (
-    <SafeAreaView style={styles.container}>
-      <Calc />
+    <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
+      <Text>Count: {count}</Text>
+      <MemoizedComponent onPress={memoizedCallback} />  
     </SafeAreaView>
   );
 };
 
+ export default App;
 
 
-export default App;
+// import React from 'react';
+// import { StyleSheet } from 'react-native';
+// import Calc from "./src/Hooks/useEffect";
+
+
+// const App = () => {
+//   return (
+//     <SafeAreaView style={styles.container}>
+//       <Calc />
+//     </SafeAreaView>
+//   );
+// };
+
+
+
+// export default App;

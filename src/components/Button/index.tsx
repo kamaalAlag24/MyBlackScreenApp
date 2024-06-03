@@ -1,5 +1,5 @@
 import { Text } from 'react-native';
-import { Container,StyledButton, getColor } from '../../styles/components/Button/style'
+import { Container,StyledButton, getColor } from '../../styles/components/button/style'
 
 
 
