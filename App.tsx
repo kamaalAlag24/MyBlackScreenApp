@@ -1,15 +1,9 @@
 // import React from 'react';
 // import { StyleSheet, View, Animated } from 'react-native';
-// import { Button } from './src/components/Button'; 
+// import { Button } from './src/components/Button';
 // import { moveCircle, value } from './src/components/Utils/Animation/Bounce';
 // import { PanGestureHandler, GestureHandlerRootView } from 'react-native-gesture-handler';
 // import { onGestureEvent, onHandlerStateChange, translateX, translateY } from './src/components/Utils/Animation/Drag';
-
-import { Button, SafeAreaView, Text, View } from "react-native";
-import { MyComponent, styles } from "./src/hooks/useState/count";
-
-
-// const App = () => {
 // //   return (
 // //     <View style={styles.container}>
 // //       <Animated.View
@@ -26,55 +20,6 @@ import { MyComponent, styles } from "./src/hooks/useState/count";
 // //     </View>
 // //   );
 // // };
-
-// return (
-//   <GestureHandlerRootView style={{ flex: 1 }}>
-//       <View style={styles.container}>
-//           <PanGestureHandler
-//               onGestureEvent={onGestureEvent}
-//               >
-//               <Animated.View
-//                   style={[
-//                       styles.circle,
-//                       {
-//                           transform: [
-//                               { translateX },
-//                               { translateY },
-//                               { translateY: value }
-//                           ]
-//                       }
-//                   ]}
-                  
-//               />
-//           </PanGestureHandler>
-//           <View style={styles.buttonContainer}>
-//         <Button variant="primary" onPress={moveCircle}></Button>
-//       </View>
-//       </View>
-//   </GestureHandlerRootView>
-// );
-// };
-
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: 'center',
-//     alignItems: 'center',
-//     backgroundColor: 'white', 
-//   },
-//   circle: {
-//     width: 100,
-//     height: 100,
-//     borderRadius: 50,
-//     backgroundColor: 'red',
-//     position: 'absolute'
-//   },
-//   buttonContainer: {
-//     position: 'absolute',
-//     bottom: 50 
-//   }
-// }); 
 
 // export default App;
 
@@ -100,7 +45,7 @@ import { MyComponent, styles } from "./src/hooks/useState/count";
 //       <FavoriteColor/>   code for usestate
 //       <Counter/>         code for useref
 //       </SafeAreaView>
-     
+
 //   );
 // }
 
@@ -108,8 +53,6 @@ import { MyComponent, styles } from "./src/hooks/useState/count";
 
 // import React, { useMemo, useState } from 'react';
 // import { ExpensiveComponent } from "./src/Hooks/useMemo";
-
-
 
 // const App = () => {
 //   const [count, setCount] = useState(0);   // useMemo
@@ -125,37 +68,33 @@ import { MyComponent, styles } from "./src/hooks/useState/count";
 
 // export default App;
 
-import React, { useCallback, useState } from "react";
-import { MemoizedComponent } from "./src/hooks/useCallBack";
+// import React, {useCallback, useState} from 'react';
+// import {MemoizedComponent} from './src/hooks/useCallBack';
 
+// const App = () => {
+//   const [count, setCount] = useState(0);
 
+//   const memoizedCallback = useCallback(() => {
+//     console.log('Callback invoked');
 
-const App = () => {
-   const [count, setCount] = useState(0);
-   
-  
-   const memoizedCallback = useCallback(() => {   
-    console.log('Callback invoked');
-    
-    setCount(count + 1);
-  }, 
-  [count]);
+//     setCount(count + 1);
+//   }, [count]);
 
-  return (
-    <SafeAreaView style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Count: {count}</Text>
-      <MemoizedComponent onPress={memoizedCallback} />  
-    </SafeAreaView>
-  );
-};
+//   return (
+//     <SafeAreaView
+//       style={{flex: 1, justifyContent: 'center', alignItems: 'center'}}>
+//       <Text>Count: {count}</Text>
+//       <MemoizedComponent onPress={memoizedCallback} />
+//     </SafeAreaView>
+//   );
+// };
 
- export default App;
-
+// export default App;
 
 // import React from 'react';
-// import { StyleSheet } from 'react-native';
-// import Calc from "./src/Hooks/useEffect";
-
+// import {SafeAreaView} from 'react-native';
+// import Calc from './src/Hooks/useEffect';
+// import {styles} from './src/Hooks/useState/count';
 
 // const App = () => {
 //   return (
@@ -165,6 +104,18 @@ const App = () => {
 //   );
 // };
 
-
-
 // export default App;
+
+import React from 'react';
+import {SafeAreaView} from 'react-native';
+import {MyComponent, styles} from './src/Hooks/useState/count';
+
+const App = () => {
+  return (
+    <SafeAreaView style={styles.container}>
+      <MyComponent />
+    </SafeAreaView>
+  );
+};
+
+export default App;

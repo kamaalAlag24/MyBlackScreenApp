@@ -1,8 +1,7 @@
-import React, { useMemo, useState } from 'react';
-import { View, Text, Button } from 'react-native';
+import React, {useMemo} from 'react';
+import {View, Text} from 'react-native';
 
 export const ExpensiveComponent = () => {
-  
   const memoizedExpensiveFunction = useMemo(() => {
     console.log('Expensive function executed');
     let result = 0;
