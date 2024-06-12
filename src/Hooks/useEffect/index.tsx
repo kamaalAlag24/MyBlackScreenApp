@@ -7,7 +7,7 @@ export const Calc = () => {
   const [calculation, setCalculation] = useState(0);
 
   useEffect(() => {
-    setCalculation(count * 2);
+    setCalculation(count + 2);
   }, [count]);
 
   return (

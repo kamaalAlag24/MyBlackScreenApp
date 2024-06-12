@@ -1,25 +1,18 @@
-import {Text} from 'react-native';
-import {
-  Container,
-  StyledButton,
-  getColor,
-} from '../../styles/components/button/style';
+import {Text, View} from 'react-native';
+import {StyledButton, getColor} from '../../styles/components/button/style';
 
 interface ButtonProps {
   variant: 'primary' | 'default' | 'dashed' | 'text' | 'link';
   onPress?: () => void;
-  children?: React.ReactNode;
+  title?: string;
 }
 
-export const Button: React.FC<ButtonProps> = ({variant, onPress, children}) => {
+export const Button: React.FC<ButtonProps> = ({variant, onPress, title}) => {
   return (
-    <Container>
+    <View>
       <StyledButton variant={variant} onPress={onPress}>
-        <Text style={{color: getColor(variant)}}>
-          {children ||
-            `${variant.charAt(0).toUpperCase() + variant.slice(1)} Button`}
-        </Text>
+        <Text style={{color: getColor(variant)}}>{title}</Text>
       </StyledButton>
-    </Container>
+    </View>
   );
 };

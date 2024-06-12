@@ -12,3 +12,5 @@ export const Counter = () => {
 
   return <Button title="Click me!" onPress={handlePress} />;
 };
+
+export default Counter;

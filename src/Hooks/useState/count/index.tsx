@@ -19,4 +19,16 @@ export const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: 'white',
   },
+  circle: {
+    width: 200,
+    height: 200,
+    backgroundColor: 'red',
+    borderRadius: 100,
+  },
+  buttonContainer: {
+    position: 'absolute',
+    bottom: 50,
+  },
 });
+
+export default MyComponent;

@@ -1,5 +1,7 @@
-import {useRef} from 'react';
-import {Animated, Button} from 'react-native';
+import React, {useRef} from 'react';
+import {Animated, View} from 'react-native';
+import {styles as importedStyles} from '../../../Hooks/useState/count';
+import {Button} from '../../../components/button';
 
 export const MyAnimatedComponent = () => {
   const value = useRef(new Animated.Value(0)).current;
@@ -20,4 +22,15 @@ export const MyAnimatedComponent = () => {
       }),
     ]).start();
   };
-  
+
+  return (
+    <View style={importedStyles.container}>
+      <Animated.View
+        style={[importedStyles.circle, {transform: [{translateY: value}]}]}
+      />
+      <Button variant="primary" onPress={moveCircle} />
+    </View>
+  );
+};
+
+export default MyAnimatedComponent;

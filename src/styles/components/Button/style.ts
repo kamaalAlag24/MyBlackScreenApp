@@ -5,6 +5,7 @@ import {SafeAreaView} from 'react-native';
 interface StyledButtonProps {
   variant?: 'primary' | 'default' | 'dashed' | 'text' | 'link';
   onPress?: () => void;
+  title?: string;
 }
 
 export const Container = styled(SafeAreaView)`
@@ -12,7 +13,9 @@ export const Container = styled(SafeAreaView)`
   justify-content: center;
   align-items: center;
   background-color: white;
-  width: 100%;
+  width: 0%;
+  position: absolute;
+  bottom: 20;
 `;
 
 export const StyledText = styled.Text`
