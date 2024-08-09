@@ -110,23 +110,34 @@
 
 // export default RegisterScreen;
 
-
-import React, { useContext } from 'react';
-import { View, Text, TextInput, StyleSheet, TouchableOpacity, Alert } from 'react-native';
-import { useForm, Controller } from 'react-hook-form';
-import { useDispatch } from 'react-redux';
-import { NativeStackScreenProps } from '@react-navigation/native-stack';
-import { addUser } from '../../../slices/userSlices';
-import { RootStackParamList } from '../../../navigation/navigationTypes';
-import { ImageProvider, ImageContext } from '../../../context/imagePicker';
-import ImagePickerComponent from '../../image';
+import React, {useContext} from 'react';
+import {
+  View,
+  Text,
+  TextInput,
+  StyleSheet,
+  TouchableOpacity,
+  Alert,
+} from 'react-native';
+import {useForm, Controller} from 'react-hook-form';
+import {useDispatch} from 'react-redux';
+import {NativeStackScreenProps} from '@react-navigation/native-stack';
+import {addUser} from '../../slices/userSlices';
+import {RootStackParamList} from '../../navigation/navigationTypes';
+import {ImageContext} from '../../context/imagePicker';
+import ImagePickerComponent from '../../components/ImageUpload';
 
 type Props = NativeStackScreenProps<RootStackParamList, 'Register'>;
 
-const RegisterScreen: React.FC<Props> = ({ navigation }) => {
+const RegisterScreen: React.FC<Props> = ({navigation}) => {
   const dispatch = useDispatch();
-  const { image, setImage } = useContext(ImageContext);
-  const { control, handleSubmit, formState: { errors }, reset } = useForm({
+  const {image, setImage} = useContext(ImageContext);
+  const {
+    control,
+    handleSubmit,
+    formState: {errors},
+    reset,
+  } = useForm({
     defaultValues: {
       email: '',
       first_name: '',
@@ -134,8 +145,12 @@ const RegisterScreen: React.FC<Props> = ({ navigation }) => {
     },
   });
 
-  const onSubmit = (data: { email: string; first_name: string; last_name: string }) => {
-    const newUser = { ...data, avatar: image, id: Date.now() };
+  const onSubmit = (data: {
+    email: string;
+    first_name: string;
+    last_name: string;
+  }) => {
+    const newUser = {...data, avatar: image, id: Date.now()};
     dispatch(addUser(newUser));
     Alert.alert('Registration Successful', 'You have successfully registered!');
     setImage(null); // Reset the image
@@ -144,62 +159,68 @@ const RegisterScreen: React.FC<Props> = ({ navigation }) => {
   };
 
   return (
-    <ImageProvider>
-      <View style={styles.container}>
-        <View style={styles.content}>
-          <Text style={styles.header}>Register</Text>
-          <ImagePickerComponent />
-          <Controller
-            control={control}
-            rules={{ required: 'Email is required' }}
-            render={({ field: { onChange, onBlur, value } }) => (
-              <TextInput
-                placeholder="Email"
-                style={styles.input}
-                onBlur={onBlur}
-                onChangeText={onChange}
-                value={value}
-              />
-            )}
-            name="email"
-          />
-          {errors.email && <Text style={styles.errorText}>{errors.email.message}</Text>}
-          <Controller
-            control={control}
-            rules={{ required: 'First name is required' }}
-            render={({ field: { onChange, onBlur, value } }) => (
-              <TextInput
-                placeholder="First Name"
-                style={styles.input}
-                onBlur={onBlur}
-                onChangeText={onChange}
-                value={value}
-              />
-            )}
-            name="first_name"
-          />
-          {errors.first_name && <Text style={styles.errorText}>{errors.first_name.message}</Text>}
-          <Controller
-            control={control}
-            rules={{ required: 'Last name is required' }}
-            render={({ field: { onChange, onBlur, value } }) => (
-              <TextInput
-                placeholder="Last Name"
-                style={styles.input}
-                onBlur={onBlur}
-                onChangeText={onChange}
-                value={value}
-              />
-            )}
-            name="last_name"
-          />
-          {errors.last_name && <Text style={styles.errorText}>{errors.last_name.message}</Text>}
-          <TouchableOpacity style={styles.button} onPress={handleSubmit(onSubmit)}>
-            <Text style={styles.buttonText}>Register</Text>
-          </TouchableOpacity>
-        </View>
+    <View style={styles.container}>
+      <View style={styles.content}>
+        <Text style={styles.header}>Register</Text>
+        <ImagePickerComponent />
+        <Controller
+          control={control}
+          rules={{required: 'Email is required'}}
+          render={({field: {onChange, onBlur, value}}) => (
+            <TextInput
+              placeholder="Email"
+              style={styles.input}
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+            />
+          )}
+          name="email"
+        />
+        {errors.email && (
+          <Text style={styles.errorText}>{errors.email.message}</Text>
+        )}
+        <Controller
+          control={control}
+          rules={{required: 'First name is required'}}
+          render={({field: {onChange, onBlur, value}}) => (
+            <TextInput
+              placeholder="First Name"
+              style={styles.input}
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+            />
+          )}
+          name="first_name"
+        />
+        {errors.first_name && (
+          <Text style={styles.errorText}>{errors.first_name.message}</Text>
+        )}
+        <Controller
+          control={control}
+          rules={{required: 'Last name is required'}}
+          render={({field: {onChange, onBlur, value}}) => (
+            <TextInput
+              placeholder="Last Name"
+              style={styles.input}
+              onBlur={onBlur}
+              onChangeText={onChange}
+              value={value}
+            />
+          )}
+          name="last_name"
+        />
+        {errors.last_name && (
+          <Text style={styles.errorText}>{errors.last_name.message}</Text>
+        )}
+        <TouchableOpacity
+          style={styles.button}
+          onPress={handleSubmit(onSubmit)}>
+          <Text style={styles.buttonText}>Register</Text>
+        </TouchableOpacity>
       </View>
-    </ImageProvider>
+    </View>
   );
 };
 
@@ -251,5 +272,3 @@ const styles = StyleSheet.create({
 });
 
 export default RegisterScreen;
-
-

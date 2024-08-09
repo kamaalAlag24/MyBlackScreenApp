@@ -95,8 +95,8 @@
 import React, { useEffect } from 'react';
 import { View, Text, FlatList, TouchableOpacity, StyleSheet, Image } from 'react-native';
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchUsers, setSelectedUser } from '../../../slices/userSlices';
-import { RootState } from '../../../store/store';
+import { fetchUsers, setSelectedUser } from '../../slices/userSlices';
+import { RootState } from '../../store/store';
 import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen: React.FC = () => {
@@ -113,15 +113,17 @@ const HomeScreen: React.FC = () => {
     navigation.navigate('Settings');
   };
 
-  const renderUser = ({ item }: any) => (
-    <TouchableOpacity onPress={() => handleUserPress(item)} style={styles.userItem}>
-      <Image source={{ uri: item.avatar }} style={styles.avatar} />
-      <View style={styles.userInfo}>
-        <Text style={styles.userName}>{item.first_name} {item.last_name}</Text>
-        <Text style={styles.userEmail}>{item.email}</Text>
-      </View>
-    </TouchableOpacity>
-  );
+  const renderUser = ({ item }: any) => {
+    return (
+      <TouchableOpacity onPress={() => handleUserPress(item)} style={styles.userItem}>
+        <Image source={{ uri: item.avatar }} style={styles.avatar} />
+        <View style={styles.userInfo}>
+          <Text style={styles.userName}>{item.first_name} {item.last_name}</Text>
+          <Text style={styles.userEmail}>{item.email}</Text>
+        </View>
+      </TouchableOpacity>
+    )
+  };
 
   return (
     <View style={styles.container}>

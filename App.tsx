@@ -169,15 +169,17 @@
 
 import React from 'react';
 import { Provider } from 'react-redux';
+import { ImageProvider } from './src/context/imagePicker';
+import { UserProvider } from './src/context/user/userContext';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons'; // Import from react-native-vector-icons
 import store from './src/store/store';
-import SignInScreen from './src/Hooks/useForm';
-import HomeScreen from './src/components/screens/homescreen/homeScreen';
-import SettingsScreen from './src/components/screens/settingscreen';
-import RegisterScreen from './src/components/screens/register';
+import SignInScreen from './src/hooks/useForm';
+import HomeScreen from './src/screens/Home';
+import SettingsScreen from './src/screens/Settings';
+import RegisterScreen from './src/screens/AddUser';
 
 const Stack = createNativeStackNavigator();
 const Tab = createBottomTabNavigator();
@@ -241,12 +243,16 @@ function HomeTabs() {
 function App() {
   return (
     <Provider store={store}>
-      <NavigationContainer>
-        <Stack.Navigator initialRouteName="SignIn">
-          <Stack.Screen name="SignIn" component={SignInScreen} options={{ headerShown: false }} />
-          <Stack.Screen name="HomeTabs" component={HomeTabs} options={{ headerShown: false }} />
-        </Stack.Navigator>
-      </NavigationContainer>
+      <UserProvider>
+        <ImageProvider>
+          <NavigationContainer>
+            <Stack.Navigator initialRouteName="SignIn">
+              <Stack.Screen name="SignIn" component={SignInScreen} options={{ headerShown: false }} />
+              <Stack.Screen name="HomeTabs" component={HomeTabs} options={{ headerShown: false }} />
+            </Stack.Navigator>
+          </NavigationContainer>
+        </ImageProvider>
+      </UserProvider>
     </Provider>
   );
 }

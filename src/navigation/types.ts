@@ -9,9 +9,8 @@ export type RootStackParamList = {
   SignIn: undefined;
   HomeTabs: undefined;
   Home: undefined;
-  Settings: undefined 
+  Settings: undefined;
   RegisterStack: undefined;
   Register: undefined;
-  UserProfile: { user: User } | undefined;
+  UserProfile: {user: User} | undefined;
 };
-

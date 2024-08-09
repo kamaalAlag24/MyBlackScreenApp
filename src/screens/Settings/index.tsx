@@ -19,7 +19,7 @@
 //   if (!selectedUser) {
 //     return (
 //       <View style={styles.noUserContainer}>
-        
+
 //         <Text style={styles.noUserText}>No user selected</Text>
 //         <Text style={styles.noUserSubText}>Please select a user from the Home screen.</Text>
 //         <TouchableOpacity style={styles.logoutButton} onPress={handleClearUser}>
@@ -115,14 +115,16 @@
 // export default SettingsScreen;
 
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity, Image } from 'react-native';
-import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../../store/store';
-import { setSelectedUser } from '../../../slices/userSlices';
-import { useNavigation } from '@react-navigation/native';
+import {View, Text, StyleSheet, TouchableOpacity, Image} from 'react-native';
+import {useSelector, useDispatch} from 'react-redux';
+import {RootState} from '../../store/store';
+import {setSelectedUser} from '../../slices/userSlices';
+import {useNavigation} from '@react-navigation/native';
 
 const SettingsScreen: React.FC = () => {
-  const selectedUser = useSelector((state: RootState) => state.user.selectedUser);
+  const selectedUser = useSelector(
+    (state: RootState) => state.user.selectedUser,
+  );
   const dispatch = useDispatch();
   const navigation = useNavigation();
 
@@ -135,10 +137,12 @@ const SettingsScreen: React.FC = () => {
     return (
       <View style={styles.noUserContainer}>
         <Text style={styles.noUserText}>No user selected</Text>
-        <Text style={styles.noUserSubText}>Please select a user from the Home screen.</Text>
+        <Text style={styles.noUserSubText}>
+          Please select a user from the Home screen.
+        </Text>
         <TouchableOpacity style={styles.logoutButton} onPress={handleClearUser}>
-        <Text style={styles.logoutButtonText}>Log out</Text>
-      </TouchableOpacity>
+          <Text style={styles.logoutButtonText}>Log out</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -146,8 +150,10 @@ const SettingsScreen: React.FC = () => {
   return (
     <View style={styles.container}>
       <View style={styles.profileHeader}>
-        <Image source={{ uri: selectedUser.avatar }} style={styles.avatar} />
-        <Text style={styles.name}>{selectedUser.first_name} {selectedUser.last_name}</Text>
+        <Image source={{uri: selectedUser.avatar}} style={styles.avatar} />
+        <Text style={styles.name}>
+          {selectedUser.first_name} {selectedUser.last_name}
+        </Text>
       </View>
       <View style={styles.profileInfo}>
         <Text style={styles.infoLabel}>Email:</Text>
@@ -182,23 +188,23 @@ const styles = StyleSheet.create({
   name: {
     fontSize: 24,
     fontWeight: 'bold',
-    color:'white',
+    color: 'white',
   },
   profileInfo: {
     width: '80%',
     marginBottom: 30,
-    color:'white',
+    color: 'white',
   },
   infoLabel: {
     fontSize: 18,
     color: '#777',
     marginBottom: 5,
-    color:'white',
+    color: 'white',
   },
   infoValue: {
     fontSize: 18,
     marginBottom: 20,
-    color:'white',
+    color: 'white',
   },
   logoutButton: {
     width: '80%',
@@ -231,4 +237,3 @@ const styles = StyleSheet.create({
 });
 
 export default SettingsScreen;
-

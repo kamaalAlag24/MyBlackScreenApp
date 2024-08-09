@@ -26,7 +26,6 @@ export const UserProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     setUser(updatedUser);
   };
 
-
   return (
     <UserContext.Provider value={{ user, register, updateProfile }}>
       {children}
