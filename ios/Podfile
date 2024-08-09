@@ -38,3 +38,5 @@ target 'MyBlackScreenApp' do
     )
   end
 end
+
+pod 'react-native-image-picker', :path => '../node_modules/react-native-image-picker'

@@ -9,7 +9,7 @@ interface CustomModalProps {
   setModalVisible: (visible: boolean) => void;
 }
 
-const CustomModal: React.FC<CustomModalProps> = ({
+export const CustomModal: React.FC<CustomModalProps> = ({
   modalVisible,
   setModalVisible,
 }) => {

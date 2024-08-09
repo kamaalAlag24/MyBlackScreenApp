@@ -7,7 +7,7 @@ interface ButtonProps {
   title?: string;
 }
 
-export const Button: React.FC<ButtonProps> = ({variant, onPress, title}) => {
+export const Buttonn: React.FC<ButtonProps> = ({variant, onPress, title}) => {
   return (
     <View>
       <StyledButton variant={variant} onPress={onPress}>
@@ -16,3 +16,5 @@ export const Button: React.FC<ButtonProps> = ({variant, onPress, title}) => {
     </View>
   );
 };
+
+ 
